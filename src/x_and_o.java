@@ -33,7 +33,51 @@ public class x_and_o {
 
     int flag = 0;
 
+     void showWelcomeDialog() {
+        JDialog welcomeDialog = new JDialog(xAndO, "Welcome", true);
+        welcomeDialog.setLayout(new BorderLayout());
+
+        JLabel title = new JLabel("🎮 Welcome to Tic-Tac-Toe!", JLabel.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 20));
+        title.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
+
+        JPanel formPanel = new JPanel(new GridLayout(4, 1, 10, 10));
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 40, 10, 40));
+
+        JTextField player1Field = new JTextField();
+        JTextField player2Field = new JTextField();
+
+        formPanel.add(new JLabel("Enter Player 1 name:"));
+        formPanel.add(player1Field);
+        formPanel.add(new JLabel("Enter Player 2 name:"));
+        formPanel.add(player2Field);
+
+        JPanel buttonPanel = new JPanel();
+        JButton startBtn = new JButton("Start Game");
+        startBtn.setBackground(new Color(0, 123, 255));
+        startBtn.setForeground(Color.WHITE);
+        startBtn.setFocusPainted(false);
+        startBtn.setFont(new Font("Arial", Font.BOLD, 14));
+        buttonPanel.add(startBtn);
+
+        startBtn.addActionListener(e -> {
+            String name1 = player1Field.getText().trim();
+            String name2 = player2Field.getText().trim();
+            if (!name1.isEmpty()) playerOneName = name1;
+            if (!name2.isEmpty()) playerTwoName = name2;
+            welcomeDialog.dispose();
+        });
+
+        welcomeDialog.add(title, BorderLayout.NORTH);
+        welcomeDialog.add(formPanel, BorderLayout.CENTER);
+        welcomeDialog.add(buttonPanel, BorderLayout.SOUTH);
+        welcomeDialog.setSize(400, 400);
+        welcomeDialog.setLocationRelativeTo(null); // Center on screen
+        welcomeDialog.setVisible(true);
+    }
+
     void drawgame() {
+        showWelcomeDialog();
         myPanel.add(btn1);
         myPanel.add(btn2);
         myPanel.add(btn3);
