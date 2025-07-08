@@ -1,7 +1,7 @@
 ![Screenshot Description](Screenshot/Welcome_Screen.png)
 This is the welcome page where the two players input their names.
 
-![Screenshot Description](Screenshot/Main_Game_Window%20.png)
+![Screenshot Description](Screenshot/Main_Game%20_Window.png)
 This is the game window where the game is played.
 The green highlighted boxes only appears when a player has won.
 
