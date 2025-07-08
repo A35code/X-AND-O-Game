@@ -1,12 +1,10 @@
-package ui;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class XandO {
+public class x_and_o {
     ArrayList<Integer> playerOne = new ArrayList<>();
     ArrayList<Integer> playerTwo = new ArrayList<>();
 
@@ -30,7 +28,7 @@ public class XandO {
     int flag = 0;
 
     public static void main(String[] args) {
-        XandO xandO = new XandO();
+        x_and_o xandO = new x_and_o();
         xandO.drawgame();
     }
 
