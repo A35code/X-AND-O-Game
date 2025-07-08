@@ -1,12 +1,10 @@
-package ui;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class XandO {
+public class x_and_o {
     ArrayList<Integer> playerOne = new ArrayList<>();
     ArrayList<Integer> playerTwo = new ArrayList<>();
 
@@ -30,7 +28,7 @@ public class XandO {
     int flag = 0;
 
     public static void main(String[] args) {
-        XandO xandO = new XandO();
+        x_and_o xandO = new x_and_o();
         xandO.drawgame();
     }
 
@@ -164,4 +162,49 @@ public class XandO {
         btn8.setEnabled(false);
         btn9.setEnabled(false);
     }
+}
+void showScoreboardFrame() {
+    JFrame scoreboardFrame = new JFrame("Scoreboard");
+    scoreboardFrame.setSize(400, 400);
+    scoreboardFrame.setLocationRelativeTo(null); // center
+    scoreboardFrame.setLayout(new GridLayout(6, 1));
+
+    JLabel gameCountLabel = new JLabel("Games Played: " + gameCount, JLabel.CENTER);
+    JLabel player1Stats = new JLabel(playerOneName + " - Wins: " + playerOneWins
+            + " | Losses: " + playerOneLosses, JLabel.CENTER);
+    JLabel player2Stats = new JLabel(playerTwoName + " - Wins: " + playerTwoWins
+            + " | Losses: " + playerTwoLosses, JLabel.CENTER);
+    JButton restartBtn = new JButton("Restart Round"); // ⬅ NEW button
+    restartBtn.addActionListener(e -> {
+        scoreboardFrame.dispose(); // close the stats window
+        resetGame();
+    });
+
+    JButton closeButton = new JButton("Exit");
+    closeButton.addActionListener(e -> System.exit(0));
+
+    scoreboardFrame.add(gameCountLabel);
+    scoreboardFrame.add(player1Stats);
+    scoreboardFrame.add(player2Stats);
+    scoreboardFrame.add(restartBtn);
+    scoreboardFrame.add(closeButton);
+
+    scoreboardFrame.setVisible(true);
+}
+
+private void resetGame() {
+    playerOne.clear();
+    playerTwo.clear();
+    flag = 0;
+
+    JButton[] buttons = { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
+    for (JButton b : buttons) {
+        b.setText("");
+        b.setEnabled(true);
+        b.setBackground(null);
+    }
+    updateBoard();
+    resetTitlePanel();
+    roundOver = false;
+    firstTurn();
 }
