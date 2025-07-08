@@ -1,12 +1,10 @@
-package ui;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class XandO {
+public class x_and_o {
     ArrayList<Integer> playerOne = new ArrayList<>();
     ArrayList<Integer> playerTwo = new ArrayList<>();
 
@@ -30,7 +28,7 @@ public class XandO {
     int flag = 0;
 
     public static void main(String[] args) {
-        XandO xandO = new XandO();
+        x_and_o xandO = new x_and_o();
         xandO.drawgame();
     }
 
@@ -165,3 +163,45 @@ public class XandO {
         btn9.setEnabled(false);
     }
 }
+    private void updateBoard() {
+        scoreboard.setText(
+            "Games: " + gameCount +
+                    "   |   " + playerOneName + " – Wins: " + playerOneWins +
+                    ", Losses: " + playerOneLosses +
+                    "   |   " + playerTwoName + " – Wins: " + playerTwoWins +
+                    ", Losses: " + playerTwoLosses);
+
+        }
+
+        String statsMessage() {
+            return "Games Played: " + gameCount +
+            "\n" + playerOneName + " – Wins: " + playerOneWins + ", Losses: " + playerOneLosses +
+            "\n" + playerTwoName + " – Wins: " + playerTwoWins + ", Losses: " + playerTwoLosses;
+            }
+
+        private void endRound() {
+            disable_buttons();
+            updateBoard();
+            resetTitlePanel();
+        }
+
+        public void xWins(int a, int c, int e) {
+            JButton[] buttons = { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
+
+            for (JButton b : buttons) {
+                b.setEnabled(false);
+            }
+            textField.setText(playerOneName + " wins");
+            textField.setForeground(new Color(0, 210, 45));
+        }
+
+        public void oWins(int a, int c, int e) {
+            JButton[] buttons = { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
+
+            for (JButton b : buttons) {
+                b.setEnabled(false);
+            }
+            textField.setText(playerTwoName + " wins");
+            textField.setForeground(new Color(0, 210, 45));
+
+        }
