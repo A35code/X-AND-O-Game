@@ -626,16 +626,16 @@ private void resetGame() {
             textField.setForeground(new Color(0, 210, 45));
         }
 
-        public void oWins(int a, int c, int e) {
-            JButton[] buttons = { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
+    public void oWins(int a, int c, int e) {
+        JButton[] buttons = { btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9 };
 
-            for (JButton b : buttons) {
-                b.setEnabled(false);
-            }
-            textField.setText(playerTwoName + " wins");
-            textField.setForeground(new Color(0, 210, 45));
-
+        for (JButton b : buttons) {
+            b.setEnabled(false);
         }
+        textField.setText(playerTwoName + " wins");
+        textField.setForeground(new Color(0, 210, 45));
+
+    }
         public void nowin(){
             textField.setText("Tie game!");
             textField.setForeground(new Color(255, 165, 0));
